@@ -1,6 +1,6 @@
 # EX01 Developing a Simple Webserver
 ## Date:
-
+28-09-2026
 ## AIM:
 To develop a simple webserver to serve html pages and display the Windows Specifications of your Laptop.
 
@@ -36,10 +36,71 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+content = """
+<html>
+    <head>
+        <title>Lap Config</title>
+    </head>
+    <body>
+        <table border="4">
+            <caption>
+                Lap Config
+            </caption>
+            <tr>
+                <th>SN</th>
+                <th>Category</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Device Name</td>
+                <td>TL15-53M-G2</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Processor</td>
+                <td>Intel(R) Core(TM) 5 210H (2.20 GHz)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Installed RAM</td>
+                <td>T6.0 GB (15.7 GB usable)</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Graphics Card</td>
+                <td>Intel(R) Graphics (128 MB)</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Stroage</td>
+                <td>104 GB of 477 GB used</td>
+            </tr>
 
-
+        </table>
+    </body>
+</html>
+"""
+class myhandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("Client request received")
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+server_address = ('',8000)
+httpd = HTTPServer(server_address,myhandler)
+print("my own webserver is running successfully...")
+httpd.serve_forever()
+```
 ## OUTPUT:
+webpage
+![alt text](<Screenshot 2026-10-21 091205.png>)
 
+webserver
+![alt text](<Screenshot 2026-10-21 091220-1.png>)
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
