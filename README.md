@@ -99,7 +99,7 @@ httpd.serve_forever()
 ```
 ## OUTPUT:
 webpage
-![alt text](<Screenshot 2026-10-21 091205.png>)
+![alt text](image-3.png)
 
 webserver
 ![alt text](<Screenshot 2026-10-21 091220-1.png>)
